@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         model.forward = Vector3.ProjectOnPlane(cam.pivot.forward, Vector3.up);
 
         sword.enabled = true;
-        horizontalVelocity = inputVec * val;
+        horizontalVelocity = inputVec.magnitude > 0 ? inputVec * val : model.forward * val;
         anim.SetBool("Attack", false);
         currentState = State.Attack;
     }
